@@ -1,0 +1,71 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+
+	cout << "(use ^ for power, % for find remainder)" << endl;
+	for (; ;) {
+
+		double num1, num2, value = 0;
+		char opr;
+
+		cout << "Enter : ";
+		cin >> num1 >> opr >> num2;
+
+		if (cin.good()) {
+			switch (opr) {
+			case '+':
+				value = num1 + num2;
+				cout << "Result : " << num1 << opr << num2 << "=" << value << endl;
+				break;
+			case '-':
+				value = num1 - num2;
+				cout << "Result : " << num1 << opr << num2 << "=" << value << endl;
+				break;
+			case '*':
+				value = num1 * num2;
+				cout << "Result : " << num1 << opr << num2 << "=" << value << endl;
+				break;
+			case '/':
+				if (num2 != 0) {
+					value = num1 / num2;
+					cout << "Result : " << num1 << opr << num2 << "=" << value << endl;
+				}
+				else {
+					cout << "Division by zero error!" << endl;
+				}
+				break;
+			case'%':
+				if ((num2 != 0)) {
+					value = remainder(num1, num2);
+					if (value < 0) {      // kesirlilerde negatif çıkarsa diye 
+						value += num2;
+					}
+					cout << "Result : " << num1 << opr << num2 << "=" << value << endl;
+				}
+				else {
+					cout << "Error!" << endl;
+				}
+				break;
+			case'^':
+				if ((num1 != 0) || (num2 != 0)) {
+					value = pow(num1, num2);
+					cout << "Result : " << num1 << opr << num2 << "=" << value << endl;
+				}
+				else {
+					cout << "Error!" << endl;
+				}
+				break;
+			default:
+				cout << opr << "is wrong operator!" << endl;
+			}
+		}
+		else {
+			cout << "Wrong data input" << endl;   // devam ettirmenin yolunu bulamadım
+			return 1;
+		}
+
+	}
+	return 0;
+}
